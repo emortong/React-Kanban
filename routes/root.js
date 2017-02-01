@@ -4,14 +4,13 @@ const bodyParser = require('body-parser');
 const db = require('../models');
 const Card = db.Card;
 
-
 router.route('/')
   .get((req, res) => {
     console.log(req);
     Card.findAll()
     .then( card => {
       console.log(card);
-      res.send('../public/index.html');
+      res.send('ok');
     })
     .catch((err) => {
       console.log(err.errors);
