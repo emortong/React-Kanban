@@ -9,34 +9,35 @@ router.route('/')
     console.log(req);
     Card.findAll()
     .then( card => {
-      console.log(card);
-      res.send('ok');
+      res.json(card);
     })
     .catch((err) => {
-      console.log(err.errors);
-      res.json(err.errors[0].message);
+      res.json(err);
     })
   })
   .post((req,res) => {
     console.log(req.body);
     Card.create({
       title: req.body.title,
-      priortity: req.body.priority,
+      priority: req.body.priority,
+      status: 'queue',
       createdBy: req.body.createdBy,
       assignedTo: req.body.assignedTo
     })
     .then(function (card) {
-      res.redirect('/');
+      res.send(card)
+      // res.redirect('/');
     })
     .catch((err) => {
-      console.log(err.errors);
-      res.json(err.errors[0].message);
+      console.log(err);
+      res.json(err);
     })
   })
   .put((req, res) => {
     Card.update({
       title: req.body.title,
-      priortity: req.body.priority,
+      priority: req.body.priority,
+      status: req.body.status,
       createdBy: req.body.createdBy,
       assignedTo: req.body.assignedTo
     },{

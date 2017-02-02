@@ -1,0 +1,21 @@
+@import '../reset.scss';
+
+
+
+.Column {
+  vertical-align: top;
+  background-color: white;
+  height: 100vh;
+  width: 33.2%;
+  display: inline-block;
+  border-left: solid gray 1px;
+  h2 {
+    padding: 15px;
+    text-align: center;
+    margin: auto;
+    font-family: Lato;
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+}

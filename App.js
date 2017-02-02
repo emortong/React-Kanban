@@ -1,12 +1,13 @@
 import React from 'react';
-// import Page from './reddit/Page';
-// import Header from './static/Header';
+import Header from './static/Header';
+import Page from './kanban/Page';
 
 class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1> Hello World </h1>
+        <Header/>
+        <Page/>
       </div>
     )
   }
