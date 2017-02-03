@@ -16,6 +16,7 @@ const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
 
 app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json({extended:true}))
 app.use('/api/cards', cardApi);
 
 

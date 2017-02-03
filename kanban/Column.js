@@ -15,6 +15,8 @@ class Column extends React.Component {
         priority={item.priority}
         createdBy={item.createdBy}
         assignedTo={item.assignedTo}
+        deleteHandler={this.props.deleteHandler}
+        id={item.id}
         key={item.id}
         >
         </Card>
@@ -32,6 +34,7 @@ class Column extends React.Component {
         priority={item.priority}
         createdBy={item.createdBy}
         assignedTo={item.assignedTo}
+        deleteHandler={this.props.deleteHandler}
         key={item.id}
         >
         </Card>
@@ -48,6 +51,7 @@ class Column extends React.Component {
         priority={item.priority}
         createdBy={item.createdBy}
         assignedTo={item.assignedTo}
+        deleteHandler={this.props.deleteHandler}
         key={item.id}
         >
         </Card>

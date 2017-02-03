@@ -6,7 +6,6 @@ const Card = db.Card;
 
 router.route('/')
   .get((req, res) => {
-    console.log(req);
     Card.findAll()
     .then( card => {
       res.json(card);
@@ -54,6 +53,7 @@ router.route('/')
     })
   })
   .delete((req,res) => {
+    console.log(req);
     Card.destroy({
       where: {
         id: req.body.id
