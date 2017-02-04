@@ -48,7 +48,7 @@ class Page extends React.Component {
     let {data} = this.props;
     let partial;
     if (data.showForm === true) {
-      partial = <NewTask />;
+      partial = <NewTask remount={this.componentWillMount}/>;
     } else {
       partial = null;
     }

@@ -58,6 +58,7 @@ class NewTask extends React.Component {
     dispatch(onChangeForm({field: 'createdBy', value: ''}))
     dispatch(onChangeForm({field: 'assignedTo', value: ''}))
     dispatch(toggleForm(false))
+    this.props.remount();
   }
   render() {
     let title = this.props.data.newCard.title;
