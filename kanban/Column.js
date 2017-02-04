@@ -4,10 +4,11 @@ import styles from './Column.scss'
 
 class Column extends React.Component {
   render() {
-    let queueCard = this.props.cardData.filter( item => {
+    console.log(this.props.cardData.cards);
+    let queueCard = this.props.cardData.cards.filter( item => {
       return item.status === 'queue';
     })
-    .map(item => {
+    .map((item, i) => {
       return (
         <Card
         color="Orange"
@@ -16,6 +17,7 @@ class Column extends React.Component {
         createdBy={item.createdBy}
         assignedTo={item.assignedTo}
         deleteHandler={this.props.deleteHandler}
+        index={item.index}
         id={item.id}
         key={item.id}
         >
@@ -23,7 +25,7 @@ class Column extends React.Component {
       )
     })
 
-    let progressCard = this.props.cardData.filter( item => {
+    let progressCard = this.props.cardData.cards.filter( item => {
       return item.status === 'progress';
     })
     .map(item => {
@@ -35,12 +37,14 @@ class Column extends React.Component {
         createdBy={item.createdBy}
         assignedTo={item.assignedTo}
         deleteHandler={this.props.deleteHandler}
+        index={item.index}
+        id={item.id}
         key={item.id}
         >
         </Card>
       )
     })
-    let doneCard = this.props.cardData.filter( item => {
+    let doneCard = this.props.cardData.cards.filter( item => {
       return item.status === 'done';
     })
     .map(item => {
@@ -52,6 +56,8 @@ class Column extends React.Component {
         createdBy={item.createdBy}
         assignedTo={item.assignedTo}
         deleteHandler={this.props.deleteHandler}
+        index={item.index}
+        id={item.id}
         key={item.id}
         >
         </Card>
@@ -59,20 +65,20 @@ class Column extends React.Component {
     })
     return (
       <div>
-          <div className={styles.Column}>
-            <h2>IN QUEUE</h2>
-            {queueCard}
-          </div>
-          <div className={styles.Column}>
-            <h2>IN PROGRESS</h2>
-            {progressCard}
-          </div>
-          <div className={styles.Column}>
-            <h2>DONE</h2>
-            {doneCard}
-          </div>
-      </div>
-    )
+        <div className={styles.Column}>
+              <h2>IN QUEUE</h2>
+              {queueCard}
+            </div>
+            <div className={styles.Column}>
+              <h2>IN PROGRESS</h2>
+              {progressCard}
+            </div>
+            <div className={styles.Column}>
+              <h2>DONE</h2>
+              {doneCard}
+            </div>
+        </div>
+      )
   }
 }
 

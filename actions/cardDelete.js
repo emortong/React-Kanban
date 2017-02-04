@@ -1,8 +1,8 @@
-export const DEL_ITEM = 'DEL_ITEM';
+export const DEL_CARD = 'DEL_CARD';
 
-export const delItem = (item) => {
+export const delCard = (item) => {
   return {
-    type: DEL_ITEM,
+    type: DEL_CARD,
     item
   }
 }

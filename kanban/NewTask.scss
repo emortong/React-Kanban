@@ -1,0 +1,46 @@
+
+.NewTask {
+  border-radius: 5px;
+  border: solid gray 1px;
+  padding: 1px;
+  margin: auto;
+  width: 300px;
+  position: fixed;
+  top: 30%;
+  left: 37%;
+  z-index: 10;
+  font-family: Lato;
+  font-weight: 300;
+  text-align: left;
+  background-color: #f9f9f9;
+
+  .close {
+    float: right;
+    margin-top: 2px;
+    margin-right: 7px;
+    font-size: 20px;
+    font-weight: 100;
+    color: gray;
+  }
+
+  form {
+    padding: 10px 0px;
+  }
+
+  label {
+    font-size: 14px;
+    margin-left: 10px;
+    letter-spacing: 2px;
+  }
+
+  input {
+    width: 87%;
+    margin-top: 5px;
+    margin-left: 10px;
+    padding: 4px;
+    border-radius: 3px;
+    box-shadow: none;
+    border: solid #e6e6e6 0.1px;
+  }
+
+}

@@ -14,30 +14,13 @@ class Page extends React.Component {
     this.onCardData = this.onCardData.bind(this)
     this.onDelData = this.onDelData.bind(this)
     this.onReqError = this.onReqError.bind(this)
-    this.deleteHandler = this.deleteHandler.bind(this)
   }
 
-  deleteHandler(key) {
-    const delReq = new XMLHttpRequest();
-    delReq.addEventListener('load', this.onDelData(key));
-    delReq.addEventListener('error', this.onReqError);
-    delReq.open('DELETE', '/api/cards');
-    delReq.setRequestHeader("Content-Type", "application/json")
-    delReq.send(JSON.stringify({id: key}));
-
-  }
-
-  onDelData(key) {
-    return () => {
-      let x = this.state.data.filter( card => {
-        return card.id !== key;
-      })
-      this.setState({data: x})
-    }
+  onDelData() {
+    return true;
   }
 
   onCardData(data) {
-    console.log(data);
     const {dispatch} = this.props;
     let resData = JSON.parse(data.currentTarget.responseText);
     dispatch(setCards(resData))
@@ -55,17 +38,24 @@ class Page extends React.Component {
     oReq.send();
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.loadCardData();
   }
+
   render() {
     let {data} = this.props;
+    let partial;
+    if (data.showForm === true) {
+      partial = <NewTask />;
+    } else {
+      partial = null;
+    }
     return (
       <div className={styles.Page}>
         <Column
           cardData={data}
-          deleteHandler={this.deleteHandler}
         />
+        {partial}
 
       </div>
       )
@@ -73,6 +63,7 @@ class Page extends React.Component {
 }
 
 const mapStateToProps = ( state, ownProps) => {
+  console.log(state);
   return {
     data: state.cardReducer.toJS()
   }
