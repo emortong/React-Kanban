@@ -7,7 +7,6 @@ const initialState = Map.of('cards', [], 'showForm', false);
 let showform = false;
 
 const indexCards = (indexed, showform) => {
-  console.log('indexed: ', indexed);
   return Map.of(
     'cards', List(indexed),
     'showForm', showform,
@@ -25,6 +24,7 @@ const cardReducer = ( state = initialState, action) => {
       })
       return indexCards(indexed, showform)
     case DEL_CARD:
+    console.log(action.item);
     return state.updateIn(['cards'], node => {
       return node.delete(action.item.index)
     });
@@ -37,17 +37,14 @@ const cardReducer = ( state = initialState, action) => {
       let field = action.value.field
       return state.updateIn(['newCard'], map => {
         return map.updateIn([field], (obj) => {
-          console.log(obj);
           return obj = action.value.value
         })
       })
     case ONSUBMIT_FORM:
     let newCard = action.newCard;
     newCard['status'] = 'queue';
-    console.log(action.newCard);
       return state.updateIn(['cards'], node => {
         newCard['key'] = node.size;
-        newCard['id'] = node.size;
         return node.push(newCard)
       })
 

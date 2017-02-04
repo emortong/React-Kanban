@@ -4,7 +4,7 @@ import styles from './Column.scss'
 
 class Column extends React.Component {
   render() {
-    console.log(this.props.cardData.cards);
+    console.log(this.props);
     let queueCard = this.props.cardData.cards.filter( item => {
       return item.status === 'queue';
     })
@@ -16,7 +16,6 @@ class Column extends React.Component {
         priority={item.priority}
         createdBy={item.createdBy}
         assignedTo={item.assignedTo}
-        deleteHandler={this.props.deleteHandler}
         index={item.index}
         id={item.id}
         key={item.id}
@@ -36,7 +35,6 @@ class Column extends React.Component {
         priority={item.priority}
         createdBy={item.createdBy}
         assignedTo={item.assignedTo}
-        deleteHandler={this.props.deleteHandler}
         index={item.index}
         id={item.id}
         key={item.id}
@@ -55,7 +53,6 @@ class Column extends React.Component {
         priority={item.priority}
         createdBy={item.createdBy}
         assignedTo={item.assignedTo}
-        deleteHandler={this.props.deleteHandler}
         index={item.index}
         id={item.id}
         key={item.id}

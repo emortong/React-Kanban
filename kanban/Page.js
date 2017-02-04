@@ -14,6 +14,7 @@ class Page extends React.Component {
     this.onCardData = this.onCardData.bind(this)
     this.onDelData = this.onDelData.bind(this)
     this.onReqError = this.onReqError.bind(this)
+    this.componentWillMount = this.componentWillMount.bind(this)
   }
 
   onDelData() {
@@ -39,6 +40,7 @@ class Page extends React.Component {
   }
 
   componentWillMount() {
+    console.log('hello');
     this.loadCardData();
   }
 
@@ -63,7 +65,6 @@ class Page extends React.Component {
 }
 
 const mapStateToProps = ( state, ownProps) => {
-  console.log(state);
   return {
     data: state.cardReducer.toJS()
   }
