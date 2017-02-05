@@ -1,10 +1,16 @@
 import React from 'react';
 import styles from './Card.scss'
-import { delCard } from '../actions/cardDelete';
+import { delCard, editStatus } from '../actions/cardActions';
 import { connect } from 'react-redux';
 
-
 class Card extends React.Component {
+   constructor() {
+    super();
+
+    this.onPutData = this.onPutData.bind(this)
+    console.log(this);
+  }
+
   delHandler() {
     let {dispatch} = this.props;
     dispatch(delCard(this.props))
@@ -17,16 +23,78 @@ class Card extends React.Component {
     delReq.send(JSON.stringify({id: this.props.id}));
   }
 
+  editHandler() {
+    console.log(this.props.isEditing);
+    let {dispatch} = this.props;
+    dispatch(editCard(this.props))
+  }
+
+  handleBtnClick(status) {
+    let data = {
+      id: this.props.id,
+      title: this.props.title,
+      priority: this.props.priority,
+      status: status,
+      createdBy: this.props.createdBy,
+      assignedTo: this.props.assignedTo
+    }
+    const delReq = new XMLHttpRequest();
+    delReq.addEventListener('load', this.onPutData);
+    delReq.addEventListener('error', this.onReqError);
+    delReq.open('PUT', '/api/cards');
+    delReq.setRequestHeader("Content-Type", "application/json")
+    delReq.send(JSON.stringify(data));
+
+  }
+  onPutData(data) {
+    this.props.remount();
+  }
+
   render() {
-    const {color} = this.props;
+    const {color, status} = this.props;
+    let xy = null
+    let qPartial;
+    let pPartial;
+    let dPartial;
+
+    switch(status) {
+      case 'queue':
+        qPartial = <div className={styles.select}></div>
+        pPartial = null;
+        dPartial = null;
+      break;
+      case 'progress':
+        qPartial = null;
+        pPartial = <div className={styles.select}></div>
+        dPartial = null;
+      break;
+      case 'done':
+        qPartial = null;
+        pPartial = null;
+        dPartial = <div className={styles.select}></div>
+      break;
+    }
+
     return (
-      <div className={`${styles.Card} ${styles[color]}`}>
-        <h4>{this.props.title}</h4>
-        <p>Priority: {this.props.priority}</p>
-        <p>Assigned to: {this.props.assignedTo}</p>
-        <h5>{this.props.createdBy}</h5>
-        <h4 onClick={this.delHandler.bind(this)}>Delete</h4>
-      </div>
+        <div className={`${styles.Card} ${styles[color]}`}>
+          <h1>{this.props.title}</h1>
+          <p>Priority: {this.props.priority}</p>
+          <p>Assigned to: {this.props.assignedTo}</p>
+          <h5>{this.props.createdBy}</h5>
+          <h4 onClick={this.editHandler.bind(this)}>Edit</h4>
+          <h4 onClick={this.delHandler.bind(this)}>Delete</h4>
+          <div className={styles.buttons}>
+            <div className={styles.qBtn} onClick={this.handleBtnClick.bind(this, 'queue')}>
+              {qPartial}
+            </div>
+            <div className={styles.pBtn} onClick={this.handleBtnClick.bind(this, 'progress')}>
+              {pPartial}
+            </div>
+            <div className={styles.dBtn} onClick={this.handleBtnClick.bind(this, 'done')}>
+              {dPartial}
+            </div>
+          </div>
+        </div>
     )
   }
 }

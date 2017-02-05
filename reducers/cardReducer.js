@@ -1,6 +1,5 @@
 import {List, Map} from 'immutable';
-import { DEL_CARD } from '../actions/cardDelete';
-import { SET_CARDS } from '../actions/setCards';
+import { SET_CARDS, EDIT_STATUS, DEL_CARD } from '../actions/cardActions';
 import { TOGGLE_FORM, ONCHANGE_FORM, ONSUBMIT_FORM } from '../actions/formActions';
 
 const initialState = Map.of('cards', [], 'showForm', false);
@@ -24,7 +23,6 @@ const cardReducer = ( state = initialState, action) => {
       })
       return indexCards(indexed, showform)
     case DEL_CARD:
-    console.log(action.item);
     return state.updateIn(['cards'], node => {
       return node.delete(action.item.index)
     });
@@ -47,7 +45,6 @@ const cardReducer = ( state = initialState, action) => {
         newCard['key'] = node.size;
         return node.push(newCard)
       })
-
     default:
       return newState;
   }

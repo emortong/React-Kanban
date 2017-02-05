@@ -4,7 +4,7 @@ import Immutable from 'immutable';
 import Column from './Column';
 import NewTask from './NewTask';
 import styles from './Page.scss';
-import { setCards } from '../actions/setCards';
+import { setCards } from '../actions/cardActions';
 
 
 class Page extends React.Component {
@@ -40,11 +40,11 @@ class Page extends React.Component {
   }
 
   componentWillMount() {
-    console.log('hello');
     this.loadCardData();
   }
 
   render() {
+    let remount = this.componentWillMount
     let {data} = this.props;
     let partial;
     if (data.showForm === true) {
@@ -56,6 +56,7 @@ class Page extends React.Component {
       <div className={styles.Page}>
         <Column
           cardData={data}
+          remount={remount}
         />
         {partial}
 

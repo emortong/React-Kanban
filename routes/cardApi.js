@@ -15,7 +15,6 @@ router.route('/')
     })
   })
   .post((req,res) => {
-    console.log(req.body);
     Card.create({
       title: req.body.title,
       priority: req.body.priority,
@@ -45,7 +44,15 @@ router.route('/')
       }
     })
     .then( card => {
-        res.json(card);
+      Card.findAll({
+        where: {
+          id: req.body.id
+        }
+      })
+      .then( foundCard => {
+        console.log(foundCard);
+        res.json(foundCard);
+      })
     })
     .catch((err) => {
       console.log(err.errors);
@@ -53,7 +60,6 @@ router.route('/')
     })
   })
   .delete((req,res) => {
-    console.log(req);
     Card.destroy({
       where: {
         id: req.body.id

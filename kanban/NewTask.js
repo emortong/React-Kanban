@@ -8,6 +8,7 @@ class NewTask extends React.Component {
     super();
 
     this.onAddCard = this.onAddCard.bind(this)
+    console.log(this);
   }
 
   quitNewTaskHandler() {

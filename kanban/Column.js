@@ -1,8 +1,12 @@
 import React from 'react';
 import Card from './Card';
-import styles from './Column.scss'
+import styles from './Column.scss';
 
 class Column extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
   render() {
     console.log(this.props);
     let queueCard = this.props.cardData.cards.filter( item => {
@@ -14,8 +18,10 @@ class Column extends React.Component {
         color="Orange"
         title={item.title}
         priority={item.priority}
+        status={item.status}
         createdBy={item.createdBy}
         assignedTo={item.assignedTo}
+        remount={this.props.remount}
         index={item.index}
         id={item.id}
         key={item.id}
@@ -33,11 +39,14 @@ class Column extends React.Component {
         color="Green"
         title={item.title}
         priority={item.priority}
+        status={item.status}
         createdBy={item.createdBy}
         assignedTo={item.assignedTo}
+        remount={this.props.remount}
         index={item.index}
         id={item.id}
         key={item.id}
+        isEditing={false}
         >
         </Card>
       )
@@ -51,11 +60,14 @@ class Column extends React.Component {
         color="Silver"
         title={item.title}
         priority={item.priority}
+        status={item.status}
         createdBy={item.createdBy}
         assignedTo={item.assignedTo}
+        remount={this.props.remount}
         index={item.index}
         id={item.id}
         key={item.id}
+        isEditing={false}
         >
         </Card>
       )
