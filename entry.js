@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import * as reducers from './reducers';
 import App from './App.js';
+import configureStore from './configureStore';
 
-const reducer = combineReducers(reducers);
-const store = createStore(reducer);
+const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>

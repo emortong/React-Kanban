@@ -21,6 +21,8 @@
     font-size: 20px;
     font-weight: 100;
     color: gray;
+    cursor: pointer;
+
   }
 
   form {
@@ -29,18 +31,23 @@
 
   label {
     font-size: 14px;
-    margin-left: 10px;
+    margin-left: 14px;
     letter-spacing: 2px;
   }
 
   input {
     width: 87%;
     margin-top: 5px;
-    margin-left: 10px;
+    margin-left: 14px;
     padding: 4px;
     border-radius: 3px;
     box-shadow: none;
     border: solid #e6e6e6 0.1px;
   }
+  .submit {
+    cursor: pointer;
+    width: 90%;
+  }
 
 }
+

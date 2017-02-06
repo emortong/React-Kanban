@@ -8,7 +8,6 @@ class Column extends React.Component {
 
   }
   render() {
-    console.log(this.props);
     let queueCard = this.props.cardData.cards.filter( item => {
       return item.status === 'queue';
     })

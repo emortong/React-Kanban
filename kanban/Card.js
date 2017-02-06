@@ -8,7 +8,6 @@ class Card extends React.Component {
     super();
 
     this.onPutData = this.onPutData.bind(this)
-    console.log(this);
   }
 
   delHandler() {
@@ -21,12 +20,6 @@ class Card extends React.Component {
     delReq.open('DELETE', '/api/cards');
     delReq.setRequestHeader("Content-Type", "application/json")
     delReq.send(JSON.stringify({id: this.props.id}));
-  }
-
-  editHandler() {
-    console.log(this.props.isEditing);
-    let {dispatch} = this.props;
-    dispatch(editCard(this.props))
   }
 
   handleBtnClick(status) {
@@ -81,8 +74,7 @@ class Card extends React.Component {
           <p>Priority: {this.props.priority}</p>
           <p>Assigned to: {this.props.assignedTo}</p>
           <h5>{this.props.createdBy}</h5>
-          <h4 onClick={this.editHandler.bind(this)}>Edit</h4>
-          <h4 onClick={this.delHandler.bind(this)}>Delete</h4>
+          <h4 onClick={this.delHandler.bind(this)} className={styles.deleteBtn}>Delete</h4>
           <div className={styles.buttons}>
             <div className={styles.qBtn} onClick={this.handleBtnClick.bind(this, 'queue')}>
               {qPartial}

@@ -8,7 +8,6 @@ class NewTask extends React.Component {
     super();
 
     this.onAddCard = this.onAddCard.bind(this)
-    console.log(this);
   }
 
   quitNewTaskHandler() {
@@ -17,7 +16,6 @@ class NewTask extends React.Component {
   }
 
   updateState(field, value) {
-    console.log(field, value);
     let {dispatch} = this.props;
     let toUpdate = {
       field,
