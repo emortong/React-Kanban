@@ -37,7 +37,8 @@ router.route('/')
       priority: req.body.priority,
       status: req.body.status,
       createdBy: req.body.createdBy,
-      assignedTo: req.body.assignedTo
+      assignedTo: req.body.assignedTo,
+      isEditing: req.body.isEditing
     },{
       where: {
         id: req.body.id

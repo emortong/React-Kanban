@@ -2,42 +2,39 @@ import React from 'react';
 import styles from './Card.scss'
 import { delCard, editStatus, toggleEditCard } from '../actions/cardActions';
 import { connect } from 'react-redux';
-import RegularCard from './RegularCard'
-import EditingCard from './EditingCard'
 
-class Card extends React.Component {
+class RegularCard extends React.Component {
    constructor() {
     super();
 
     this.onPutData = this.onPutData.bind(this)
-    this.editCard = false;
   }
 
   delHandler() {
-    let {dispatch} = this.props;
-    dispatch(delCard(this.props))
+    let {dispatch} = this.props.props;
+    dispatch(delCard(this.props.props))
 
     const delReq = new XMLHttpRequest();
     delReq.addEventListener('load', this.onDelData);
     delReq.addEventListener('error', this.onReqError);
     delReq.open('DELETE', '/api/cards');
     delReq.setRequestHeader("Content-Type", "application/json")
-    delReq.send(JSON.stringify({id: this.props.id}));
+    delReq.send(JSON.stringify({id: this.props.props.id}));
   }
 
   editHandler() {
-    // let {dispatch} = this.props;
-    // dispatch(toggleEditCard(this.props, true))
+    let {dispatch} = this.props.props;
+    dispatch(toggleEditCard(this.props.props, true))
   }
 
   handleBtnClick(status) {
     let data = {
-      id: this.props.id,
-      title: this.props.title,
-      priority: this.props.priority,
+      id: this.props.props.id,
+      title: this.props.props.title,
+      priority: this.props.props.priority,
       status: status,
-      createdBy: this.props.createdBy,
-      assignedTo: this.props.assignedTo
+      createdBy: this.props.props.createdBy,
+      assignedTo: this.props.props.assignedTo
     }
     const delReq = new XMLHttpRequest();
     delReq.addEventListener('load', this.onPutData);
@@ -48,20 +45,11 @@ class Card extends React.Component {
 
   }
   onPutData(data) {
-    this.props.remount();
+    this.props.props.remount();
   }
 
   render() {
-    console.log(this.editCard);
-    let partial;
-
-    if(this.editCard) {
-      partial = <EditingCard props={this.props}/>
-    } else {
-      partial = null;
-    }
-
-    const {color, status} = this.props;
+    const {color, status} = this.props.props;
     let xy = null
     let qPartial;
     let pPartial;
@@ -84,12 +72,13 @@ class Card extends React.Component {
         dPartial = <div className={styles.select}></div>
       break;
     }
+
     return (
         <div className={`${styles.Card} ${styles[color]}`}>
-          <h1>{this.props.title}</h1>
-          <p>Priority: {this.props.priority}</p>
-          <p>Assigned to: {this.props.assignedTo}</p>
-          <h5>{this.props.createdBy}</h5>
+          <h1>{this.props.props.title}</h1>
+          <p>Priority: {this.props.props.priority}</p>
+          <p>Assigned to: {this.props.props.assignedTo}</p>
+          <h5>{this.props.props.createdBy}</h5>
           <h4 onClick={this.editHandler.bind(this)} className={styles.deleteBtn}>Edit</h4>
           <h4 onClick={this.delHandler.bind(this)} className={styles.deleteBtn}>Delete</h4>
           <div className={styles.buttons}>
@@ -103,7 +92,6 @@ class Card extends React.Component {
               {dPartial}
             </div>
           </div>
-          {partial}
         </div>
     )
   }
@@ -117,4 +105,4 @@ const mapStateToProps = ( state, ownProps) => {
 
 export default connect(
   mapStateToProps
-  )(Card);
+  )(RegularCard);
