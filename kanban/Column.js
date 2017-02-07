@@ -22,7 +22,7 @@ class Column extends React.Component {
         createdBy={item.createdBy}
         assignedTo={item.assignedTo}
         remount={this.props.remount}
-        editCard={item.editCard}
+        isEditing={item.isEditing}
         index={item.index}
         id={item.id}
         key={item.id}
@@ -44,7 +44,7 @@ class Column extends React.Component {
         createdBy={item.createdBy}
         assignedTo={item.assignedTo}
         remount={this.props.remount}
-        editCard={item.editCard}
+        isEditing={item.isEditing}
         index={item.index}
         id={item.id}
         key={item.id}
@@ -64,7 +64,7 @@ class Column extends React.Component {
         status={item.status}
         createdBy={item.createdBy}
         assignedTo={item.assignedTo}
-        editCard={item.editCard}
+        isEditing={item.isEditing}
         remount={this.props.remount}
         index={item.index}
         id={item.id}

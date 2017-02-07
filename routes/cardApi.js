@@ -20,11 +20,11 @@ router.route('/')
       priority: req.body.priority,
       status: 'queue',
       createdBy: req.body.createdBy,
-      assignedTo: req.body.assignedTo
+      assignedTo: req.body.assignedTo,
+      isEditing: false
     })
     .then(function (card) {
       res.send(card)
-      // res.redirect('/');
     })
     .catch((err) => {
       console.log(err);

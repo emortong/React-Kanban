@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Card.scss'
-import { delCard, editStatus, toggleEditCard } from '../actions/cardActions';
+import { delCard, editStatus } from '../actions/cardActions';
 import { connect } from 'react-redux';
 
 class RegularCard extends React.Component {
@@ -23,8 +23,21 @@ class RegularCard extends React.Component {
   }
 
   editHandler() {
-    let {dispatch} = this.props.props;
-    dispatch(toggleEditCard(this.props.props, true))
+    let data = {
+      id: this.props.props.id,
+      title: this.props.props.title,
+      priority: this.props.props.priority,
+      status: this.props.props.status,
+      createdBy: this.props.props.createdBy,
+      assignedTo: this.props.props.assignedTo,
+      isEditing: true
+    }
+    const delReq = new XMLHttpRequest();
+    delReq.addEventListener('load', this.onPutData);
+    delReq.addEventListener('error', this.onReqError);
+    delReq.open('PUT', '/api/cards');
+    delReq.setRequestHeader("Content-Type", "application/json")
+    delReq.send(JSON.stringify(data));
   }
 
   handleBtnClick(status) {
@@ -34,7 +47,8 @@ class RegularCard extends React.Component {
       priority: this.props.props.priority,
       status: status,
       createdBy: this.props.props.createdBy,
-      assignedTo: this.props.props.assignedTo
+      assignedTo: this.props.props.assignedTo,
+      isEditing: false
     }
     const delReq = new XMLHttpRequest();
     delReq.addEventListener('load', this.onPutData);

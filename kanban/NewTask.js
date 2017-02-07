@@ -23,10 +23,11 @@ class NewTask extends React.Component {
     }
     dispatch(onChangeForm(toUpdate))
   }
-  handleTitleChange(event) {
+  handleTitleChange(event, field) {
     this.updateState('title', event.target.value);
   }
   handlePriorityChange(event) {
+    console.log(event);
     this.updateState('priority', event.target.value);
   }
   handleCreatedByChange(event) {

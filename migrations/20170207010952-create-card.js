@@ -15,13 +15,16 @@ module.exports = {
         type: Sequelize.STRING
       },
       status: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       createdBy: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       assignedTo: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
+      },
+      isEditing: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

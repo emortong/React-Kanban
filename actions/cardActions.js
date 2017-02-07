@@ -1,7 +1,7 @@
 export const SET_CARDS = 'SET_CARDS';
 export const EDIT_STATUS = 'EDIT_STATUS';
 export const DEL_CARD = 'DEL_CARD';
-export const TOGGLE_EDIT_CARD = 'TOGGLE_EDIT_CARD';
+export const ONCHANGE_EDIT = 'ONCHANGE_EDIT';
 
 export const setCards = (data) => {
   return {
@@ -24,11 +24,10 @@ export const delCard = (item) => {
   }
 }
 
-export const toggleEditCard = (data, bool) => {
+export const onChangeEdit = (data) => {
   return {
-    type: TOGGLE_EDIT_CARD,
-    data,
-    bool
+    type: ONCHANGE_EDIT,
+    data
   }
 }
 
