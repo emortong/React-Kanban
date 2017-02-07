@@ -22,7 +22,6 @@ class EditingCard extends React.Component {
     this.updateState('title', event.target.value);
   }
   handlePriorityChange(event) {
-    console.log(event);
     this.updateState('priority', event.target.value);
   }
   handleCreatedByChange(event) {
@@ -33,10 +32,6 @@ class EditingCard extends React.Component {
   }
 
   doneHandler() {
-    this.props.data.editing.title
-    ? console.log(true)
-    : console.log(false);
-
     let data = {
       id: this.props.props.id ,
       title: this.props.data.editing.title ? this.props.data.editing.title : this.props.props.title,
@@ -55,7 +50,7 @@ class EditingCard extends React.Component {
   }
 
   onPutData(data) {
-    this.props.props.remount();
+    this.props.props.loadCardData();
   }
 
   render() {
@@ -71,6 +66,7 @@ class EditingCard extends React.Component {
           <input type="text" placeholder={this.props.props.priority} value={priority} onChange={this.handlePriorityChange.bind(this)}/><br/>
           <label> Assigned to: </label>
           <input type="text" placeholder={this.props.props.assignedTo} value={assignedTo} onChange={this.handleAssignedToChange.bind(this)}/><br/>
+          <label> Created by: </label>
           <input type="text" placeholder={this.props.props.createdBy} value={createdBy} onChange={this.handleCreatedByChange.bind(this)}/><br/>
           <input type="submit" placeholder="Done" onClick={this.doneHandler.bind(this)}/>
         </div>

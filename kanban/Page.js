@@ -15,6 +15,7 @@ class Page extends React.Component {
     this.onDelData = this.onDelData.bind(this)
     this.onReqError = this.onReqError.bind(this)
     this.componentWillMount = this.componentWillMount.bind(this)
+    this.loadCardData = this.loadCardData.bind(this)
   }
 
   onDelData() {
@@ -44,11 +45,10 @@ class Page extends React.Component {
   }
 
   render() {
-    let remount = this.componentWillMount
     let {data} = this.props;
     let partial;
     if (data.showForm === true) {
-      partial = <NewTask remount={this.componentWillMount}/>;
+      partial = <NewTask loadCardData={this.loadCardData}/>;
     } else {
       partial = null;
     }
@@ -56,7 +56,7 @@ class Page extends React.Component {
       <div className={styles.Page}>
         <Column
           cardData={data}
-          remount={remount}
+          loadCardData={this.loadCardData}
         />
         {partial}
 

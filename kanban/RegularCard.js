@@ -60,7 +60,8 @@ class RegularCard extends React.Component {
 
   }
   onPutData(data) {
-    this.props.props.remount();
+    console.log(this.props.props.loadCardData);
+    this.props.props.loadCardData();
   }
 
   render() {
