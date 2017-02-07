@@ -12,25 +12,27 @@ class RegularCard extends React.Component {
   }
 
   delHandler() {
+    let cardProps = this.props.props.cardProps;
     let {dispatch} = this.props.props;
-    dispatch(delCard(this.props.props))
+    dispatch(delCard(cardProps))
 
     const delReq = new XMLHttpRequest();
     delReq.addEventListener('load', this.onDelData);
     delReq.addEventListener('error', this.onReqError);
     delReq.open('DELETE', '/api/cards');
     delReq.setRequestHeader("Content-Type", "application/json")
-    delReq.send(JSON.stringify({id: this.props.props.id}));
+    delReq.send(JSON.stringify({id: cardProps.id}));
   }
 
   editHandler() {
+    let cardProps = this.props.props.cardProps;
     let data = {
-      id: this.props.props.id,
-      title: this.props.props.title,
-      priority: this.props.props.priority,
-      status: this.props.props.status,
-      createdBy: this.props.props.createdBy,
-      assignedTo: this.props.props.assignedTo,
+      id: cardProps.id,
+      title: cardProps.title,
+      priority: cardProps.priority,
+      status: cardProps.status,
+      createdBy: cardProps.createdBy,
+      assignedTo: cardProps.assignedTo,
       isEditing: true
     }
     const delReq = new XMLHttpRequest();
@@ -42,13 +44,14 @@ class RegularCard extends React.Component {
   }
 
   handleBtnClick(status) {
+    let cardProps = this.props.props.cardProps;
     let data = {
-      id: this.props.props.id,
-      title: this.props.props.title,
-      priority: this.props.props.priority,
+      id: cardProps.id,
+      title: cardProps.title,
+      priority: cardProps.priority,
       status: status,
-      createdBy: this.props.props.createdBy,
-      assignedTo: this.props.props.assignedTo,
+      createdBy: cardProps.createdBy,
+      assignedTo: cardProps.assignedTo,
       isEditing: false
     }
     const delReq = new XMLHttpRequest();
@@ -60,12 +63,13 @@ class RegularCard extends React.Component {
 
   }
   onPutData(data) {
-    console.log(this.props.props.loadCardData);
     this.props.props.loadCardData();
   }
 
   render() {
-    const {color, status} = this.props.props;
+    let cardProps = this.props.props.cardProps;
+    const {color} = this.props.props;
+    const {status} = cardProps;
     let xy = null
     let qPartial;
     let pPartial;
@@ -92,10 +96,10 @@ class RegularCard extends React.Component {
     return (
         <div className={`${styles.Card} ${styles[color]}`}>
           <div onClick={this.delHandler.bind(this)} className={styles.deleteBtn}> × </div>
-          <h1>{this.props.props.title}</h1>
-          <p>Priority: {this.props.props.priority}</p>
-          <p>Assigned to: {this.props.props.assignedTo}</p>
-          <h5>{this.props.props.createdBy}</h5>
+          <h1>{cardProps.title}</h1>
+          <p>Priority: {cardProps.priority}</p>
+          <p>Assigned to: {cardProps.assignedTo}</p>
+          <h5>{cardProps.createdBy}</h5>
           <div onClick={this.editHandler.bind(this)} className={styles.editBtn}>Edit</div>
           <div className={styles.buttons}>
             <div className={styles.qBtn} onClick={this.handleBtnClick.bind(this, 'queue')}>

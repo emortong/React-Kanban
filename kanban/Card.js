@@ -10,7 +10,9 @@ class Card extends React.Component {
   render() {
     let partial;
 
-    if(this.props.isEditing) {
+    console.log(this.props.cardProps.isEditing);
+
+    if(this.props.cardProps.isEditing) {
       partial = <EditingCard props={this.props}/>
     } else {
       partial = <RegularCard props={this.props}/>

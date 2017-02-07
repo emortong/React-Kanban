@@ -33,12 +33,12 @@ class EditingCard extends React.Component {
 
   doneHandler() {
     let data = {
-      id: this.props.props.id ,
-      title: this.props.data.editing.title ? this.props.data.editing.title : this.props.props.title,
-      priority: this.props.data.editing.priority ? this.props.data.editing.priority : this.props.props.priority,
+      id: this.props.props.cardProps.id ,
+      title: this.props.data.editing.title ? this.props.data.editing.title : this.props.props.cardProps.title,
+      priority: this.props.data.editing.priority ? this.props.data.editing.priority : this.props.props.cardProps.priority,
       status: this.props.props.status,
-      createdBy: this.props.data.editing.createdBy ? this.props.data.editing.createdBy : this.props.props.createdBy,
-      assignedTo: this.props.data.editing.assignedTo ? this.props.data.editing.assignedTo : this.props.props.assignedTo,
+      createdBy: this.props.data.editing.createdBy ? this.props.data.editing.createdBy : this.props.props.cardProps.createdBy,
+      assignedTo: this.props.data.editing.assignedTo ? this.props.data.editing.assignedTo : this.props.props.cardProps.assignedTo,
       isEditing: false,
     }
     const delReq = new XMLHttpRequest();
@@ -61,13 +61,13 @@ class EditingCard extends React.Component {
     let createdBy = this.props.data.editing.createdBy;
     return (
         <div className={`${styles.Card} ${styles[color]}`}>
-          <input type="text" placeholder={this.props.props.title} value={title} onChange={this.handleTitleChange.bind(this)}/><br/>
+          <input type="text" placeholder={this.props.props.cardProps.title} value={title} onChange={this.handleTitleChange.bind(this)}/><br/>
           <label> Priority: </label>
-          <input type="text" placeholder={this.props.props.priority} value={priority} onChange={this.handlePriorityChange.bind(this)}/><br/>
+          <input type="text" placeholder={this.props.props.cardProps.priority} value={priority} onChange={this.handlePriorityChange.bind(this)}/><br/>
           <label> Assigned to: </label>
-          <input type="text" placeholder={this.props.props.assignedTo} value={assignedTo} onChange={this.handleAssignedToChange.bind(this)}/><br/>
+          <input type="text" placeholder={this.props.props.cardProps.assignedTo} value={assignedTo} onChange={this.handleAssignedToChange.bind(this)}/><br/>
           <label> Created by: </label>
-          <input type="text" placeholder={this.props.props.createdBy} value={createdBy} onChange={this.handleCreatedByChange.bind(this)}/><br/>
+          <input type="text" placeholder={this.props.props.cardProps.createdBy} value={createdBy} onChange={this.handleCreatedByChange.bind(this)}/><br/>
           <input type="submit" placeholder="Done" onClick={this.doneHandler.bind(this)}/>
         </div>
     )

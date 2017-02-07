@@ -8,7 +8,7 @@ class Column extends React.Component {
 
   }
   render() {
-    console.log(this.props);
+
     let queueCard = this.props.cardData.cards.filter( item => {
       return item.status === 'queue';
     })
@@ -16,15 +16,8 @@ class Column extends React.Component {
       return (
         <Card
         color="Orange"
-        title={item.title}
-        priority={item.priority}
-        status={item.status}
-        createdBy={item.createdBy}
-        assignedTo={item.assignedTo}
+        cardProps={item}
         loadCardData={this.props.loadCardData}
-        isEditing={item.isEditing}
-        index={item.index}
-        id={item.id}
         key={item.id}
         >
         </Card>
@@ -38,15 +31,8 @@ class Column extends React.Component {
       return (
         <Card
         color="Green"
-        title={item.title}
-        priority={item.priority}
-        status={item.status}
-        createdBy={item.createdBy}
-        assignedTo={item.assignedTo}
+        cardProps={item}
         loadCardData={this.props.loadCardData}
-        isEditing={item.isEditing}
-        index={item.index}
-        id={item.id}
         key={item.id}
         >
         </Card>
@@ -59,15 +45,8 @@ class Column extends React.Component {
       return (
         <Card
         color="Silver"
-        title={item.title}
-        priority={item.priority}
-        status={item.status}
-        createdBy={item.createdBy}
-        assignedTo={item.assignedTo}
-        isEditing={item.isEditing}
+        cardProps={item}
         loadCardData={this.props.loadCardData}
-        index={item.index}
-        id={item.id}
         key={item.id}
         >
         </Card>
