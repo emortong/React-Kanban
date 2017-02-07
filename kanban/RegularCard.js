@@ -3,6 +3,7 @@ import styles from './Card.scss'
 import { delCard, editStatus } from '../actions/cardActions';
 import { connect } from 'react-redux';
 
+
 class RegularCard extends React.Component {
    constructor() {
     super();
@@ -89,12 +90,12 @@ class RegularCard extends React.Component {
 
     return (
         <div className={`${styles.Card} ${styles[color]}`}>
+          <div onClick={this.delHandler.bind(this)} className={styles.deleteBtn}> × </div>
           <h1>{this.props.props.title}</h1>
           <p>Priority: {this.props.props.priority}</p>
           <p>Assigned to: {this.props.props.assignedTo}</p>
           <h5>{this.props.props.createdBy}</h5>
-          <h4 onClick={this.editHandler.bind(this)} className={styles.deleteBtn}>Edit</h4>
-          <h4 onClick={this.delHandler.bind(this)} className={styles.deleteBtn}>Delete</h4>
+          <div onClick={this.editHandler.bind(this)} className={styles.editBtn}>Edit</div>
           <div className={styles.buttons}>
             <div className={styles.qBtn} onClick={this.handleBtnClick.bind(this, 'queue')}>
               {qPartial}
