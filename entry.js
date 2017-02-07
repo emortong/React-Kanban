@@ -6,6 +6,7 @@ import configureStore from './configureStore';
 
 const store = configureStore();
 
+
 ReactDOM.render(
   <Provider store={store}>
     <App/>

@@ -5,10 +5,8 @@ import styles from './Column.scss';
 class Column extends React.Component {
   constructor(props) {
     super(props);
-
   }
   render() {
-
     let queueCard = this.props.cardData.cards.filter( item => {
       return item.status === 'queue';
     })
@@ -55,19 +53,19 @@ class Column extends React.Component {
     return (
       <div>
         <div className={styles.Column}>
-              <h2>IN QUEUE</h2>
-              {queueCard}
-            </div>
-            <div className={styles.Column}>
-              <h2>IN PROGRESS</h2>
-              {progressCard}
-            </div>
-            <div className={styles.Column}>
-              <h2>DONE</h2>
-              {doneCard}
-            </div>
+          <h2>IN QUEUE</h2>
+          {queueCard}
         </div>
-      )
+        <div className={styles.Column}>
+          <h2>IN PROGRESS</h2>
+          {progressCard}
+        </div>
+        <div className={styles.Column}>
+          <h2>DONE</h2>
+          {doneCard}
+        </div>
+      </div>
+    )
   }
 }
 

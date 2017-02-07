@@ -11,7 +11,7 @@ class EditingCard extends React.Component {
   }
 
   updateState(field, value) {
-    let {dispatch} = this.props;
+    const {dispatch} = this.props;
     let toUpdate = {
       field,
       value
@@ -32,13 +32,15 @@ class EditingCard extends React.Component {
   }
 
   doneHandler() {
+    const { cardProps } = this.props.props;
+    const { editing } = this.props.data;
     let data = {
-      id: this.props.props.cardProps.id ,
-      title: this.props.data.editing.title ? this.props.data.editing.title : this.props.props.cardProps.title,
-      priority: this.props.data.editing.priority ? this.props.data.editing.priority : this.props.props.cardProps.priority,
+      id: cardProps.id ,
+      title: editing.title ? editing.title : cardProps.title,
+      priority: editing.priority ? editing.priority : cardProps.priority,
       status: this.props.props.status,
-      createdBy: this.props.data.editing.createdBy ? this.props.data.editing.createdBy : this.props.props.cardProps.createdBy,
-      assignedTo: this.props.data.editing.assignedTo ? this.props.data.editing.assignedTo : this.props.props.cardProps.assignedTo,
+      createdBy: editing.createdBy ? editing.createdBy : cardProps.createdBy,
+      assignedTo: editing.assignedTo ? editing.assignedTo : cardProps.assignedTo,
       isEditing: false,
     }
     const delReq = new XMLHttpRequest();
@@ -54,21 +56,47 @@ class EditingCard extends React.Component {
   }
 
   render() {
-    const {color} = this.props.props;
-    let title = this.props.data.editing.title;
-    let priority = this.props.data.editing.priority;
-    let assignedTo = this.props.data.editing.assignedTo;
-    let createdBy = this.props.data.editing.createdBy;
+    const { editing } = this.props.data;
+    const { cardProps } = this.props.props;
+    const { color } = this.props.props;
+    let title = editing.title;
+    let priority = editing.priority;
+    let assignedTo = editing.assignedTo;
+    let createdBy = editing.createdBy;
     return (
         <div className={`${styles.Card} ${styles[color]}`}>
-          <input type="text" placeholder={this.props.props.cardProps.title} value={title} onChange={this.handleTitleChange.bind(this)}/><br/>
+          <input
+          type="text"
+          placeholder={cardProps.title}
+          value={title}
+          onChange={this.handleTitleChange.bind(this)}
+          /><br/>
           <label> Priority: </label>
-          <input type="text" placeholder={this.props.props.cardProps.priority} value={priority} onChange={this.handlePriorityChange.bind(this)}/><br/>
+          <input
+          type="text"
+          placeholder={cardProps.priority}
+          value={priority}
+          onChange={this.handlePriorityChange.bind(this)}
+          /><br/>
           <label> Assigned to: </label>
-          <input type="text" placeholder={this.props.props.cardProps.assignedTo} value={assignedTo} onChange={this.handleAssignedToChange.bind(this)}/><br/>
+          <input
+          type="text"
+          placeholder={cardProps.assignedTo}
+          value={assignedTo}
+          onChange={this.handleAssignedToChange.bind(this)}
+          /><br/>
           <label> Created by: </label>
-          <input type="text" placeholder={this.props.props.cardProps.createdBy} value={createdBy} onChange={this.handleCreatedByChange.bind(this)}/><br/>
-          <input type="submit" placeholder="Done" onClick={this.doneHandler.bind(this)}/>
+          <input
+          type="text"
+          placeholder={cardProps.createdBy}
+          value={createdBy}
+          onChange={this.handleCreatedByChange.bind(this)}
+          /><br/>
+          <input
+          type="submit"
+          placeholder="Done"
+          onClick={this.doneHandler.bind(this)}
+          />
         </div>
     )
   }

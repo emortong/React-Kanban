@@ -14,7 +14,6 @@ class Page extends React.Component {
     this.onCardData = this.onCardData.bind(this)
     this.onDelData = this.onDelData.bind(this)
     this.onReqError = this.onReqError.bind(this)
-    this.componentWillMount = this.componentWillMount.bind(this)
     this.loadCardData = this.loadCardData.bind(this)
   }
 
@@ -59,7 +58,6 @@ class Page extends React.Component {
           loadCardData={this.loadCardData}
         />
         {partial}
-
       </div>
       )
   }
