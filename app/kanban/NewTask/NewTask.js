@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './NewTask.scss'
-import { toggleForm, onChangeForm, onSubmitForm, setItems } from '../actions/formActions';
+import { toggleForm, onChangeForm, onSubmitForm, setItems } from '../../actions/formActions';
 import { connect } from 'react-redux';
 
 class NewTask extends React.Component {
@@ -29,6 +29,7 @@ class NewTask extends React.Component {
   }
 
   handlePriorityChange(event) {
+    console.log(event.target.value);
     this.updateState('priority', event.target.value);
   }
 
@@ -80,11 +81,11 @@ class NewTask extends React.Component {
         </label> <br/>
         <label>
           Priority: <br/>
-          <input
-          type="text"
-          value={priority}
-          onChange={this.handlePriorityChange.bind(this)}
-          />
+          <select onChange={this.handlePriorityChange.bind(this)}>
+              <option value={'high'}> High </option>
+              <option value={'medium'}> Medium </option>
+              <option value={'low'}> Low </option>
+          </select>
         </label> <br/>
         <label>
           Created By: <br/>

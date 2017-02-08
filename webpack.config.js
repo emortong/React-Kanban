@@ -7,7 +7,7 @@ module.exports = {
   devtool: 'eval-source-map',
   entry: [
     'webpack-hot-middleware/client?reload=true',
-    path.join(__dirname, '/entry.js'),
+    path.join(__dirname, './app/entry.js'),
   ],
   output: {
     path: path.resolve(__dirname, './dist'),

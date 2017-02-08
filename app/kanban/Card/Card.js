@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Card.scss'
-import { delCard, editStatus } from '../actions/cardActions';
+import { delCard, editStatus } from '../../actions/cardActions';
 import { connect } from 'react-redux';
 import RegularCard from './RegularCard'
 import EditingCard from './EditingCard'

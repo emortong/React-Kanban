@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Immutable from 'immutable';
-import Column from './Column';
-import NewTask from './NewTask';
+import Column from '../Column/Column';
+import NewTask from '../NewTask/NewTask';
 import styles from './Page.scss';
-import { setCards } from '../actions/cardActions';
+import { setCards } from '../../actions/cardActions';
 
 
 class Page extends React.Component {

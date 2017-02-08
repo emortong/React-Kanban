@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './static/Header';
-import Page from './kanban/Page';
+import Page from './kanban/Page/Page';
 
 class App extends React.Component {
   render() {

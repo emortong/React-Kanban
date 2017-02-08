@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './Card';
+import Card from '../Card/Card';
 import styles from './Column.scss';
 
 class Column extends React.Component {
@@ -10,17 +10,18 @@ class Column extends React.Component {
     let queueCard = this.props.cardData.cards.filter( item => {
       return item.status === 'queue';
     })
-    .map((item, i) => {
-      return (
-        <Card
-        color="Orange"
-        cardProps={item}
-        loadCardData={this.props.loadCardData}
-        key={item.id}
-        >
-        </Card>
-      )
-    })
+    console.log(queueCard);
+    // .map( item => {
+    //   return (
+    //     <Card
+    //     color="Orange"
+    //     cardProps={item}
+    //     loadCardData={this.props.loadCardData}
+    //     key={item.id}
+    //     >
+    //     </Card>
+    //   )
+    // })
 
     let progressCard = this.props.cardData.cards.filter( item => {
       return item.status === 'progress';

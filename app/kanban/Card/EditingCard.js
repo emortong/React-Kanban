@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Card.scss'
-import { onChangeEdit } from '../actions/cardActions';
+import { onChangeEdit } from '../../actions/cardActions';
 import { connect } from 'react-redux';
 
 class EditingCard extends React.Component {
@@ -72,12 +72,11 @@ class EditingCard extends React.Component {
           onChange={this.handleTitleChange.bind(this)}
           /><br/>
           <label> Priority: </label>
-          <input
-          type="text"
-          placeholder={cardProps.priority}
-          value={priority}
-          onChange={this.handlePriorityChange.bind(this)}
-          /><br/>
+          <select onChange={this.handlePriorityChange.bind(this)}>
+              <option value={'high'}> High </option>
+              <option value={'medium'}> Medium </option>
+              <option value={'low'}> Low </option>
+          </select><br/>
           <label> Assigned to: </label>
           <input
           type="text"

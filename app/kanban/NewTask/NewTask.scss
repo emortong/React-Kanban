@@ -44,10 +44,22 @@
     box-shadow: none;
     border: solid #e6e6e6 0.1px;
   }
+
+  select {
+    width: 90.2%;
+    height: 26px;
+    margin: 5px 0px 5px 14px;
+    border: solid #e6e6e6 0.1px;
+    border-radius: -1px;
+    background-color: white;
+  }
+
   .submit {
     cursor: pointer;
     width: 90%;
   }
 
 }
+
+
 
