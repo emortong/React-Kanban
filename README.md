@@ -7,12 +7,12 @@
 
 ## Getting Started
 
-- Fork and clone
-- Rename `config/configExample.json` to `config/config.json`, in this same file, set your username where it is indicated
-- Run `npm install` to install all your dependencies
-- Create a database for the project in Postgres. Name it `kanban`
-- Connect to `kanban`
-- Run `sequelize db:migrate` in your terminal
-- Run `node server.js`
-- Go to `localhost:3000` in your browser
+- Fork and clone.
+- Rename `config/configExample.json` to `config/config.json`, in this same file, set your username where it is indicated.
+- Run `npm install` to install all your dependencies.
+- Create a database for the project in Postgres. Name it `kanban`.
+- Connect to `kanban`.
+- Run `sequelize db:migrate` in your terminal.
+- Run `node server.js`.
+- Go to `localhost:3000` in your browser.
 - Click on `new task` and start adding tasks to your Kanban board!

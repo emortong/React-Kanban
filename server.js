@@ -65,15 +65,5 @@ const onStart = (err) => {
 
 app.listen(port, 'localhost', onStart);
 
-//==================
-
-
-// app.use(express.static('public'));
-
-
-// app.listen(3033, function() {
-//   console.log('Started connection on port 3033');
-//   // db.sequelize.sync();
-// });
 
 module.exports = app;
