@@ -7,23 +7,35 @@ class Column extends React.Component {
     super(props);
   }
   render() {
-    let queueCard = this.props.cardData.cards.filter( item => {
+    let {cards} = this.props.cardData;
+    let high = cards.filter(item => {
+      return item.priority === 'high';
+    })
+    let medium = cards.filter(item => {
+      return item.priority === 'medium';
+    })
+    let low = cards.filter(item => {
+      return item.priority === 'low';
+    })
+    let sortedCards = high.concat(medium, low);
+    console.log(sortedCards);
+
+    let queueCard = sortedCards.filter( item => {
       return item.status === 'queue';
     })
-    console.log(queueCard);
-    // .map( item => {
-    //   return (
-    //     <Card
-    //     color="Orange"
-    //     cardProps={item}
-    //     loadCardData={this.props.loadCardData}
-    //     key={item.id}
-    //     >
-    //     </Card>
-    //   )
-    // })
+    .map( item => {
+      return (
+        <Card
+        color="Orange"
+        cardProps={item}
+        loadCardData={this.props.loadCardData}
+        key={item.id}
+        >
+        </Card>
+      )
+    })
 
-    let progressCard = this.props.cardData.cards.filter( item => {
+    let progressCard = sortedCards.filter( item => {
       return item.status === 'progress';
     })
     .map(item => {
@@ -37,7 +49,7 @@ class Column extends React.Component {
         </Card>
       )
     })
-    let doneCard = this.props.cardData.cards.filter( item => {
+    let doneCard = sortedCards.filter( item => {
       return item.status === 'done';
     })
     .map(item => {
