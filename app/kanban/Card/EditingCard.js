@@ -63,6 +63,8 @@ class EditingCard extends React.Component {
     let priority = editing.priority;
     let assignedTo = editing.assignedTo;
     let createdBy = editing.createdBy;
+    console.log(editing.priority);
+
     return (
         <div className={`${styles.Card} ${styles[color]}`}>
           <input

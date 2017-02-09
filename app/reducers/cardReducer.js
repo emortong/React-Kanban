@@ -9,7 +9,7 @@ const indexCards = (indexed, showform) => {
   return Map.of(
     'cards', List(indexed),
     'showForm', showForm,
-    'newCard', Map.of('title', '', 'priority', '', 'createdBy', '', 'assignedTo', ''),
+    'newCard', Map.of('title', '', 'priority', 'high', 'createdBy', '', 'assignedTo', ''),
     'editing', Map.of('title', '', 'priority', '', 'createdBy', '', 'assignedTo', '')
     );
 }
