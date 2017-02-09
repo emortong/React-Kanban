@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 const cardApi = require('./routes/cardApi');
 const db = require('./models');
 const Card = db.Card;
-const pg = require('pg');
+// const pg = require('pg');
 
 // Check to see what dev environment we are in
 const isDeveloping = process.env.NODE_ENV !== 'production';
@@ -20,17 +20,17 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json({extended:true}))
 app.use('/api/cards', cardApi);
 
-pg.defaults.ssl = true;
-pg.connect(process.env.DATABASE_URL, function(err, client) {
-  if (err) throw err;
-  console.log('Connected to postgres! Getting schemas...');
+// pg.defaults.ssl = true;
+// pg.connect(process.env.DATABASE_URL, function(err, client) {
+//   if (err) throw err;
+//   console.log('Connected to postgres! Getting schemas...');
 
-  client
-    .query('SELECT table_schema,table_name FROM information_schema.tables;')
-    .on('row', function(row) {
-      console.log(JSON.stringify(row));
-    });
-});
+//   client
+//     .query('SELECT table_schema,table_name FROM information_schema.tables;')
+//     .on('row', function(row) {
+//       console.log(JSON.stringify(row));
+//     });
+// });
 
 if (isDeveloping) {
   app.set('host', 'http://localhost');
