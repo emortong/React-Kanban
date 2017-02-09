@@ -5,6 +5,7 @@ var path      = require('path');
 var Sequelize = require('sequelize');
 var basename  = path.basename(module.filename);
 var env       = process.env.NODE_ENV || 'development';
+var PORT      = process.env.PORT || 5432;
 var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
@@ -12,7 +13,7 @@ if (process.env.DATABASE_URL) {
    sequelize = new Sequelize(process.env.DATABASE_URL, {
       dialect:  'postgres',
       protocol: 'postgres',
-      port:     match[4],
+      port:     PORT,
       host:     match[3],
       logging:  false
     })
