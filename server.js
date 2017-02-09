@@ -74,7 +74,9 @@ const onStart = (err) => {
   );
 };
 
-app.listen(process.env.PORT || port);
+db.sequelize.sync().then(function() {
+  app.listen(process.env.PORT || port);
+})
 
 
 module.exports = app;
