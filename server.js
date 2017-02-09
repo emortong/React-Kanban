@@ -15,7 +15,7 @@ const Card = db.Card;
 // Check to see what dev environment we are in
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
-
+console.log('hello')
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json({extended:true}))
 app.use('/api/cards', cardApi);
