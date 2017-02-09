@@ -74,7 +74,7 @@ const onStart = (err) => {
   );
 };
 
-app.listen(process.env.PORT || port, 'localhost', onStart);
+app.listen(process.env.PORT || port, 'stark-shore-14804.herokuapp.com', onStart);
 
 
 module.exports = app;
